@@ -26,9 +26,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="220dp"
         android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="25dp">
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottie_tree"
             android:layout_width="match_parent"
@@ -37,7 +37,27 @@
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/treeplant" />
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: "
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Now My Bunsai So Happy :)"
+            android:textSize="18dp"
+            android:layout_marginBottom="6dp"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +66,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:padding="15dp"
-        android:layout_marginBottom="25dp">
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:layout_marginLeft="10dp"
