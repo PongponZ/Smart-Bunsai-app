@@ -1,16 +1,16 @@
-#include <ArduinoJson.h>
 #include <ESP8266WiFi.h>
 #include <MCP3208.h>
 #include <SPI.h>
 #include <FirebaseArduino.h>
+//#include <ArduinoJson.h>
 
 //set Microship up
 MCP3208 adc(D8);
 
-#define WIFI_SSID       "Atittan"
-#define WIFI_PASSWORD   "kDywepao"
-#define FIREBASE_HOST "smart-bonsai-f6d63.firebaseio.com"
-#define FIREBASE_AUTH "xiSAEgG6d2oC8vMoW08911mAbm6JOJt9douyAA6G"
+#define WIFI_SSID       "WiFi_NAME"
+#define WIFI_PASSWORD   "WiFi_Password"
+#define FIREBASE_HOST "Firebase_URL_HOST"
+#define FIREBASE_AUTH "Firbase_AUTH_KEY"
 #define water_swicth D1
 
 int temp_sensor_pin = 0, light_sensor_pin = 3, moisture_sensor_pin = 6, calibrate = 53;
@@ -18,20 +18,23 @@ int temp_sensor_pin = 0, light_sensor_pin = 3, moisture_sensor_pin = 6, calibrat
 void setup() {
   adc.begin();                                      //Microship read
   Serial.begin(115200);
+  
   connectWiFi(WIFI_SSID, WIFI_PASSWORD);            //Connect to WiFi
+  
   pinMode(water_swicth, OUTPUT);
+  
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);     //Connect to Firebase
-  Firebase.stream("water_switch/status");
+  Firebase.stream("water_switch/status");           //Check status of switch
 }
 
 void loop() {
   
   switchCheck();
   
-  int rawValue = adc.analogRead(temp_sensor_pin);
-  float light_analog_val = adc.analogRead(light_sensor_pin);
-  float moisture_analog_val = adc.analogRead(moisture_sensor_pin);
-  float temperature_analog_val = convertTemperature(rawValue);
+  int rawValue = adc.analogRead(temp_sensor_pin);                       //Raw Data
+  float light_analog_val = adc.analogRead(light_sensor_pin);            //Raw Data
+  float moisture_analog_val = adc.analogRead(moisture_sensor_pin);      //Raw Data
+  float temperature_analog_val = convertTemperature(rawValue);          //Raw Data
   
   //Sent to Firebase
 //sendObject("temperature",temperature_analog_val);
@@ -50,6 +53,7 @@ void loop() {
 
 }//End Loop
 
+//Check Switch
 void switchCheck(){
   if (Firebase.failed()) {
     Serial.println("streaming error");
@@ -69,11 +73,10 @@ void switchCheck(){
        bool data = event.getBool("data");
        Serial.println("\n[" + path + "] " + String(data));
        if (path == "/") {
-         digitalWrite(water_swicth, (data == false ? LOW : HIGH));
+         digitalWrite(water_swicth, (data == false ? LOW : HIGH));    //if turn on in your phone Switch will be turn on
        }
      }
   }
-   
 }
 
 //Temperature Converter
