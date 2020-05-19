@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Smart Bunsai</string>
+    <string name="app_name">Smart Bonsai</string>
     <string name="watering">Watering</string>
     <string name="waterAuto">Watering Automatic</string>
     <string name="light">Light:</string>

@@ -3,11 +3,16 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="colorBackground">#F2F1DF</color>
 
-    <color name="colorBtn">#707070</color>
+    <color name="colorBackground">#D4FFE9</color>
+
+    <color name="colorBtn">#52DE97</color>
 
     <color name="colorText">#135F37</color>
-    <color name="colorTextWhite">#ffffff</color>
+    <color name="colorTextWhite">#1B4D33</color>
 
+
+    <color name="colorBtnOn">#f0be5b</color>
+    <color name="colorBtnDisable">#cccbc8</color>
+    <!-- #52DE97 เขียวเข้ม #D4FFE9 เขียวอ่อน  #1B4D33 ตัวนส    #707070 #F2F1DF   -->
 </resources>
