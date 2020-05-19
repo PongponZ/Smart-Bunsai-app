@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity {
     LinearLayout water_layout;
 
     //value
-    boolean auto_switch = false;
+    boolean auto_switch = false, isOpen = false;
     int moisture_value = 0;
     int light_value = 0;
     double temp_value = 0;
@@ -102,15 +102,17 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!auto_switch){
-                    water_switch.setValue(true);
-                    water_layout.setBackgroundResource(R.drawable.btn_on);
-                    water_layout.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            water_layout.setBackgroundResource(R.drawable.btn_shape_xlong);
-                            water_switch.setValue(false);
-                        }
-                    }, 5000);
+                    if(!isOpen){
+                        water_switch.setValue(true);
+                        water_layout.setBackgroundResource(R.drawable.btn_on);
+                        isOpen = true;
+                    }else{
+                        water_layout.setBackgroundResource(R.drawable.btn_shape_xlong);
+                        water_switch.setValue(false);
+                        isOpen = false;
+
+                    }
+
                 }else{
                     Toast.makeText(getApplicationContext(), "WATERING IS AUTO",Toast.LENGTH_LONG).show();
                 }
