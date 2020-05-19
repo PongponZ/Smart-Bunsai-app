@@ -29,8 +29,8 @@ public class HomeActivity extends AppCompatActivity {
     String TAG = "TAG";
     //Firebase fireStore
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference  water_switch_auto = database.getReference("water_auto/status");
-    DatabaseReference  water_switch = database.getReference("water_switch/status");
+    DatabaseReference  water_switch_auto = database.getReference("switch/water_auto/status");
+    DatabaseReference  water_switch = database.getReference("switch/water_switch/status");
     Query light_qry = database.getReference("sensor/light/values").orderByKey().limitToLast(1);
     Query temperature_qry = database.getReference("sensor/temperature/values").orderByKey().limitToLast(1);
     Query moisture_qry = database.getReference("sensor/moisture/values").orderByKey().limitToLast(1);
@@ -110,7 +110,7 @@ public class HomeActivity extends AppCompatActivity {
                             water_layout.setBackgroundResource(R.drawable.btn_shape_xlong);
                             water_switch.setValue(false);
                         }
-                    }, 180000);
+                    }, 5000);
                 }else{
                     Toast.makeText(getApplicationContext(), "WATERING IS AUTO",Toast.LENGTH_LONG).show();
                 }
