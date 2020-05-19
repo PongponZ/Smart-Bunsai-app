@@ -110,7 +110,7 @@ public class HomeActivity extends AppCompatActivity {
                             water_layout.setBackgroundResource(R.drawable.btn_shape_xlong);
                             water_switch.setValue(false);
                         }
-                    }, 5000);
+                    }, 180000);
                 }else{
                     Toast.makeText(getApplicationContext(), "WATERING IS AUTO",Toast.LENGTH_LONG).show();
                 }
