@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">smartbunsai</string>
+    <string name="app_name">Smart Bonsai</string>
+    <string name="watering">Watering</string>
+    <string name="waterAuto">Watering Automatic</string>
+    <string name="light">Light:</string>
+    <string name="temperature">Temperature:</string>
+    <string name="moisture">Moisture:</string>
 </resources>
